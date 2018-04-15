@@ -1,14 +1,52 @@
-# loopback-connector-postgresql
+Loopback PostgreSQL Connector
+=============
 
-[PostgreSQL](https://www.postgresql.org/), is a popular open-source object-relational database.
-The `loopback-connector-postgresql` module is the PostgreSQL connector for the LoopBack framework.
+This loopback module is the PostgreSQL connector for the LoopBack framework. [PostgreSQL](https://www.postgresql.org/), is a popular open-source object-relational database.
 
-<div class="gh-only">For more information, see the <a href="http://loopback.io/doc/en/lb3/PostgreSQL-connector.html">documentation</a>.
-<br/><br/>
+Original Author: Strongloop IBM
+
+Updated Author: Let's Comunica - fabio@letscomunica.com.br
+
+For more information, see the [documentation](http://loopback.io/doc/en/lb3/PostgreSQL-connector.html).
+
 NOTE: The PostgreSQL connector requires PostgreSQL 8.x or 9.x.
-</div>
 
-## Installation
+**LAST VERSION: 0.0.1**
+
+Updates
+-------
+
+Made a modification? Test it at least in one project before submiting a version. It still needs unit testing and CI with projects. After everything seems perfectly up-to-date, run the following steps:
+
+1\. Commit and push your updates using Let's Bitbucket credentials
+
+2\. Change and commit a new tag version (always check and update the last version here and in package.json):
+
+```bash
+$ git tag -a vX.X.X -m "version_message"
+```
+
+3\. Push the new tag version to remote repository:
+
+```bash
+$ git push origin vX.X.X  # Version needs to be the same from commit
+```
+
+4\. Run npm installation with the newest version:
+
+```bash
+  npm install --save git+ssh://git@bitbucket.org/letscomunicadev/loopback-lets-postgresql-connector.git#vX.X.X
+```
+
+Fork History
+-------
+
+### v0.0.1
+
++ added unaccent option for SELECT queries with regex.
+
+Installation
+-------
 
 In your application root directory, enter this command to install the connector:
 
@@ -20,6 +58,9 @@ This installs the module from npm and adds it as a dependency to the application
 
 If you create a PostgreSQL data source using the data source generator as described below, you don't have to do this, since the generator will run `npm install` for you.
 
+Usage
+-------
+
 ## Creating a data source
 
 Use the [Data source generator](http://loopback.io/doc/en/lb3/Data-source-generator.html) to add a PostgreSQL data source to your application.  
@@ -28,7 +69,6 @@ required to connect to a PostgreSQL database.  It will also run the `npm install
 
 The entry in the application's `/server/datasources.json` will look like this:
 
-{% include code-caption.html content="/server/datasources.json" %}
 ```javascript
 "mydb": {
   "name": "mydb",
@@ -45,7 +85,7 @@ The entry in the application's `/server/datasources.json` will look like this:
 
 Edit `datasources.json` to add other properties that enable you to connect the data source to a PostgreSQL database.
 
-### Connection Pool Settings
+## Connection Pool Settings
 
 You can also specify connection pool settings in `datasources.json`. For instance you can specify the minimum and the maximum pool size, and the maximum pool client's idle time before closing the client.
 
@@ -70,90 +110,31 @@ Example of `datasource.json`:
 ```
 Check out [node-pg-pool](https://github.com/brianc/node-pg-pool) and [node postgres pooling example](https://github.com/brianc/node-postgres#pooling-example) for more information.
 
-### Properties
+Properties
+-------
 
-<table>
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-    <tbody>    
-    <tr>
-      <td>connector</td>
-      <td>String</td>
-      <td>
-        Connector name, either "loopback-connector-postgresql" or "postgresql"
-      </td>
-    </tr>
-    <tr>
-      <td>database</td>
-      <td>String</td>
-      <td>Database name</td>
-    </tr>
-    <tr>
-      <td>debug</td>
-      <td>Boolean</td>
-      <td>If true, turn on verbose mode to debug database queries and lifecycle.</td>
-    </tr>
-    <tr>
-      <td>host</td>
-      <td>String</td>
-      <td>Database host name</td>
-    </tr>
-    <tr>
-      <td>password</td>
-      <td>String</td>
-      <td>Password to connect to database</td>
-    </tr>
-    <tr>
-      <td>port</td>
-      <td>Number</td>
-      <td>Database TCP port</td>
-    </tr>
-    <tr>
-      <td>url</td>
-      <td>String</td>
-      <td>Use instead of the<code>host</code>,<code>port</code>,<code>user</code>,<code>password</code>,
-        and<code>database</code>properties. For example:'postgres://test:mypassword@localhost:5432/dev'.
-      </td>
-    </tr>
-    <tr>
-      <td>username</td>
-      <td>String</td>
-      <td>Username to connect to database</td>
-    </tr>
-    <tr>
-      <td>min</td>
-      <td>Integer</td>
-      <td>Minimum number of clients in the connection pool</td>
-    </tr>
-    <tr>
-      <td>max</td>
-      <td>Integer</td>
-      <td>Maximum number of clients in the connection pool</td>
-    </tr>
-    <tr>
-      <td>idleTimeoutMillis</td>
-      <td>Integer</td>
-      <td>Maximum time a client in the pool has to stay idle before closing it</td>
-    </tr>
-    <tr>
-      <td>ssl</td>
-      <td>Boolean</td>
-      <td>Whether to try SSL/TLS to connect to server</td>
-    </tr>
-  </tbody>
-</table>
+| Property | Type | Description |
+|---|---|---|
+| connector | String | Connector name, either "loopback-connector-postgresql" or "postgresql" |
+| database | String | Database name |
+| debug | Boolean | If true, turn on verbose mode to debug database queries and lifecycle. |
+| host | String | Database host name |
+| password | String | Password to connect to database |
+| port | Number | Database TCP port |
+| url | String | Use instead of the host, port, user, password, and database properties. For example:'postgres://test:mypassword@localhost:5432/dev'. |
+| username | String | Username to connect to database |
+| min | Integer | Minimum number of clients in the connection pool |
+| max | Integer | Maximum number of clients in the connection pool |
+| idleTimeoutMillis | Integer | Maximum time a client in the pool has to stay idle before closing it |
+| ssl | Boolean | Whether to try SSL/TLS to connect to server |
 
 **NOTE**: By default, the 'public' schema is used for all tables.
 
 The PostgreSQL connector uses [node-postgres](https://github.com/brianc/node-postgres) as the driver. For more
 information about configuration parameters, see [node-postgres documentation](https://github.com/brianc/node-postgres/wiki/Client#constructors).
 
-### Connecting to UNIX domain socket
+Connecting to UNIX domain socket
+-------
 
 A common PostgreSQL configuration is to connect to the UNIX domain socket `/var/run/postgresql/.s.PGSQL.5432` instead of using the TCP/IP port. For example:
 
@@ -172,40 +153,19 @@ A common PostgreSQL configuration is to connect to the UNIX domain socket `/var/
 }
 ```
 
-## Defining models
+Defining models
+-------
 
 The model definition consists of the following properties.
 
-<table>
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>    
-    <tr>
-      <td>name</td>
-      <td>Camel-case of the database table name</td>
-      <td>Name of the model.</td>
-    </tr>
-    <tr>
-      <td>options</td>
-      <td>N/A</td>
-      <td>Model level operations and mapping to PostgreSQL schema/table</td>
-    </tr>
-    <tr>
-      <td>properties</td>
-      <td>N/A</td>
-      <td>Property definitions, including mapping to PostgreSQL column</td>
-    </tr>
-  </tbody>
-</table>
+| Property | Default | Description |
+|---|---|---|
+| name | Camel-case of the database table name | Name of the model. |
+| options | N/A | Model level operations and mapping to PostgreSQL schema/table |
+| properties | N/A | Property definitions, including mapping to PostgreSQL column |
 
 For example:
 
-{% include code-caption.html content="/common/models/model.json" %}
 ```javascript
 {
   "name": "Inventory",
@@ -298,84 +258,38 @@ For example:
 }
 ```
 
-## Type mapping
+Type mapping
+-------
 
 See [LoopBack types](http://loopback.io/doc/en/lb3/LoopBack-types.html) for details on LoopBack's data types.
 
 ### LoopBack to PostgreSQL types
 
-<table>
-  <tbody>
-    <tr>
-      <th>LoopBack Type</th>
-      <th>PostgreSQL Type</th>
-    </tr>
-    <tr>
-      <td>String<br>JSON<br>Text<br>Default</td>
-      <td>
-        VARCHAR2<br/>
-        Default length is 1024
-      </td>
-    </tr>
-    <tr>
-      <td>Number</td>
-      <td>INTEGER</td>
-    </tr>
-    <tr>
-      <td>Date</td>
-      <td>TIMESTAMP WITH TIME ZONE</td>
-    </tr>
-    <tr>
-      <td>Boolean</td>
-      <td>BOOLEAN</td>
-    </tr>
-  </tbody>
-</table>
+| LoopBack Type | PostgreSQL Type |
+|---|---|---|
+| String/JSON/Text/Default | VARCHAR2 - Default length is 1024 |
+| Number | INTEGER |
+| Date | TIMESTAMP WITH TIME ZONE |
+| Boolean | BOOLEAN |
 
 ### PostgreSQL types to LoopBack
 
-<table>
-  <tbody>
-    <tr>
-      <th>PostgreSQL Type</th>
-      <th>LoopBack Type</th>
-    </tr>
-    <tr>
-      <td>BOOLEAN</td>
-      <td>Boolean</td>
-    </tr>
-    <tr>
-      <td>
-        VARCHAR<br>CHARACTER VARYING<br>CHARACTER<br>CHAR<br>TEXT
-      </td>
-      <td>String</td>
-    </tr>
-    <tr>
-      <td>BYTEA</td>
-      <td>Node.js <a href="http://nodejs.org/api/buffer.html">Buffer object</a></td>
-    </tr>
-    <tr>
-      <td>SMALLINT<br>INTEGER<br>BIGINT<br>DECIMAL<br>NUMERIC<br>REAL<br>DOUBLE<br>SERIAL<br>BIGSERIAL</td>
-      <td>Number</td>
-    </tr>
-    <tr>
-      <td>DATE<br>TIMESTAMP<br>TIME</td>
-      <td>Date</td>
-    </tr>
-    <tr>
-      <td>POINT</td>
-      <td><a href="http://apidocs.strongloop.com/loopback-datasource-juggler/#geopoint">GeoPoint</a></td>
-    </tr>
-  </tbody>
-</table>
+| PostgreSQL Type | LoopBack Type |
+|---|---|---|
+| BOOLEAN | Boolean |
+| VARCHAR/CHARACTER VARYING/CHARACTER/CHAR/TEXT | String |
+| BYTEA | Node.js [Buffer object](http://nodejs.org/api/buffer.html) |
+| SMALLINT/INTEGER/BIGINT/DECIMAL/NUMERIC/REAL/DOUBLE/SERIAL/BIGSERIAL | Number |
+| DATE/TIMESTAMP/TIME | Date |
+| POINT | [GeoPoint](http://apidocs.strongloop.com/loopback-datasource-juggler/#geopoint) |
 
-## Numeric Data Type
+### Numeric Data Type
 
 **Note**: The [node.js driver for postgres](https://github.com/brianc/node-postgres) by default casts `Numeric` type as a string on `GET` operation. This is to avoid _data precision loss_ since `Numeric` types in postgres cannot be safely converted to JavaScript `Number`.
 
 For details, see the corresponding [driver issue](https://github.com/brianc/node-pg-types/issues/28).
 
-## Querying JSON fields
+### Querying JSON fields
 
 **Note** The fields you are querying should be setup to use the JSON postgresql data type - see Defining models
 
@@ -406,7 +320,8 @@ Customer.find({
 })
 ```
 
-## Discovery and auto-migration
+Discovery and auto-migration
+-------
 
 ### Model discovery
 
@@ -430,7 +345,8 @@ The auto-migrate method:
 
 Destroying models may result in errors due to foreign key integrity. First delete any related models by calling delete on models with relationships.
 
-## Running tests
+Running tests
+-------
 
 ### Own instance
 If you have a local or remote PostgreSQL instance and would like to use that to run the test suite, use the following command:
