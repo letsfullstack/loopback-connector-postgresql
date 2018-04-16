@@ -11,7 +11,7 @@ For more information, see the [documentation](http://loopback.io/doc/en/lb3/Post
 
 NOTE: The PostgreSQL connector requires PostgreSQL 8.x or 9.x.
 
-**LAST VERSION: 0.0.1**
+**LAST VERSION: 0.0.2**
 
 Updates
 -------
@@ -40,6 +40,10 @@ $ git push origin vX.X.X  # Version needs to be the same from commit
 
 Fork History
 -------
+
+### v0.0.2
+
++ fix: insert back splitted SQL commands to returned sql
 
 ### v0.0.1
 
