@@ -1,31 +1,45 @@
-Loopback PostgreSQL Connector
-=============
+# Loopback PostgreSQL Connector
 
-This loopback module is the PostgreSQL connector for the LoopBack framework. [PostgreSQL](https://www.postgresql.org/), is a popular open-source object-relational database.
-
-Original Author: Strongloop IBM
+This loopback module is the PostgreSQL connector for the LoopBack framework. [PostgreSQL](https://www.postgresql.org/), is a popular open-source object-relational database. https://github.com/letsfullstack/loopback-connector-postgresql/workflows/Publish%20Github%20Package/badge.svg
 
 For more information, see the [documentation](http://loopback.io/doc/en/lb3/PostgreSQL-connector.html).
 
-NOTE: The PostgreSQL connector requires PostgreSQL 8.x or 9.x.
+**NOTE**: The PostgreSQL connector requires PostgreSQL 8.x or 9.x.
 
-Installation
+## Contributing
+-------
+
+:boom: In case you are making a commit for this package repository, **MAKE SURE TO READ AND UNDERSTAND THE FOLLOWING TOPICS**:
+
+1\. Every commit that runs on the [master branch](https://github.com/letsfullstack/loopback-connector-postgresql/tree/master) runs through the Publish Github Package Workflow on Github Actions. So **be sure to check if your code is well written and tested**, since it'll be published if the code passes the Continuous Integration (CI) unit tests.
+
+2\. If the commit passes through the Github Actions workflow, the module will be released as a package in the Github Packages Registry. This workflow has an [underlying command](https://github.com/phips28/gh-action-bump-version) that **increments/bumps the version from the latest release based on commit messages**, such as:
+
+- If the string "BREAKING CHANGE" or "major" is found anywhere in any of the commit messages or descriptions, the **major version** will be incremented (i.e. 1.X.X).
+
+- If a commit message begins with the string "feat" or includes "minor" then the **minor version** will be increased (i.e. X.1.X). This works for most common commit metadata for feature additions: "feat: new API" and "feature: new API".
+
+- All other changes will increment the **patch version** (i.e. X.X.1).
+
+3\. Furthermore, the workflow has also an underlying command that deploys automatically a new release when a success test/deployment takes places. These releases can be found [here](https://github.com/letsfullstack/loopback-connector-postgresql/releases).
+
+## Installation
 -------
 
 In your application root directory, enter this command to install the connector:
 
 ```shell
-$ npm install --save git+ssh://git@bitbucket.org/letscomunicadev/loopback-lets-postgresql-connector.git#v0.0.3
+$ npm install @letsfullstack/loopback-connector-postgresql
 ```
 
 This installs the module from npm and adds it as a dependency to the application's `package.json` file.
 
 If you create a PostgreSQL data source using the data source generator as described below, you don't have to do this, since the generator will run `npm install` for you.
 
-Usage
+## Usage
 -------
 
-## Creating a data source
+### Creating a data source
 
 Use the [Data source generator](http://loopback.io/doc/en/lb3/Data-source-generator.html) to add a PostgreSQL data source to your application.  
 The generator will prompt for the database server hostname, port, and other settings
@@ -49,7 +63,7 @@ The entry in the application's `/server/datasources.json` will look like this:
 
 Edit `datasources.json` to add other properties that enable you to connect the data source to a PostgreSQL database.
 
-## Connection Pool Settings
+### Connection Pool Settings
 
 You can also specify connection pool settings in `datasources.json`. For instance you can specify the minimum and the maximum pool size, and the maximum pool client's idle time before closing the client.
 
@@ -74,7 +88,7 @@ Example of `datasource.json`:
 ```
 Check out [node-pg-pool](https://github.com/brianc/node-pg-pool) and [node postgres pooling example](https://github.com/brianc/node-postgres#pooling-example) for more information.
 
-Properties
+## Properties
 -------
 
 | Property | Type | Description |
@@ -97,7 +111,7 @@ Properties
 The PostgreSQL connector uses [node-postgres](https://github.com/brianc/node-postgres) as the driver. For more
 information about configuration parameters, see [node-postgres documentation](https://github.com/brianc/node-postgres/wiki/Client#constructors).
 
-Connecting to UNIX domain socket
+## Connecting to UNIX domain socket
 -------
 
 A common PostgreSQL configuration is to connect to the UNIX domain socket `/var/run/postgresql/.s.PGSQL.5432` instead of using the TCP/IP port. For example:
@@ -117,7 +131,7 @@ A common PostgreSQL configuration is to connect to the UNIX domain socket `/var/
 }
 ```
 
-Defining models
+## Defining models
 -------
 
 The model definition consists of the following properties.
@@ -222,7 +236,7 @@ For example:
 }
 ```
 
-Type mapping
+## Type mapping
 -------
 
 See [LoopBack types](http://loopback.io/doc/en/lb3/LoopBack-types.html) for details on LoopBack's data types.
@@ -249,13 +263,13 @@ See [LoopBack types](http://loopback.io/doc/en/lb3/LoopBack-types.html) for de
 
 ### Numeric Data Type
 
-**Note**: The [node.js driver for postgres](https://github.com/brianc/node-postgres) by default casts `Numeric` type as a string on `GET` operation. This is to avoid _data precision loss_ since `Numeric` types in postgres cannot be safely converted to JavaScript `Number`.
+**NOTE**: The [node.js driver for postgres](https://github.com/brianc/node-postgres) by default casts `Numeric` type as a string on `GET` operation. This is to avoid _data precision loss_ since `Numeric` types in postgres cannot be safely converted to JavaScript `Number`.
 
 For details, see the corresponding [driver issue](https://github.com/brianc/node-pg-types/issues/28).
 
 ### Querying JSON fields
 
-**Note** The fields you are querying should be setup to use the JSON postgresql data type - see Defining models
+**NOTE**: The fields you are querying should be setup to use the JSON postgresql data type - see Defining models
 
 Assuming a model such as this:
 
@@ -284,7 +298,7 @@ Customer.find({
 })
 ```
 
-Discovery and auto-migration
+## Discovery and auto-migration
 -------
 
 ### Model discovery
@@ -309,7 +323,7 @@ The auto-migrate method:
 
 Destroying models may result in errors due to foreign key integrity. First delete any related models by calling delete on models with relationships.
 
-Running tests
+## Running tests
 -------
 
 ### Own instance

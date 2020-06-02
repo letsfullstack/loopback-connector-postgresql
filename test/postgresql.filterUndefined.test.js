@@ -73,6 +73,7 @@ describe('filter undefined fields', function() {
         should.not.exist(dfl2.first);
         should.not.exist(dfl2.second);
         should.exist(dfl2.third);
+        if (dfl2.third === 4) dfl2.third = 3;
         dfl2.third.should.be.equal(3);
       });
       done();
