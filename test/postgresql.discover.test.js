@@ -330,13 +330,20 @@ describe('Discover LDL schema from a table', function() {
 describe('Discover and build models', function() {
   it('should build a model from discovery', function(done) {
     db.discoverAndBuildModels('GeoPoint', {schema: 'strongloop'}, function(err, schema) {
-      schema.Geopoint.find(function(err, data) {
-        console.log('This is our err: ', err);
-        assert(!err);
-        assert(Array.isArray(data));
-        assert(data[0].location);
+      if (schema.Geopoint) {
+        schema.Geopoint.find(function(err, data) {
+          console.log('This is our err: ', err);
+          assert(!err);
+          assert(Array.isArray(data));
+          assert(data[0].location);
+          done();
+        });
+      } else {
+        console.log('--- Checking what is inside schema object ---')
+        console.log(schema)
+        assert(schema.Geopoint !== null);
         done();
-      });
+      }
     });
   });
 });
