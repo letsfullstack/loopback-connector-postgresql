@@ -7,7 +7,6 @@ For more information, see the [documentation](http://loopback.io/doc/en/lb3/Post
 **NOTE**: The PostgreSQL connector requires PostgreSQL 8.x or 9.x.
 
 ## Contributing
--------
 
 :boom: In case you are making a commit for this package repository, **MAKE SURE TO READ AND UNDERSTAND THE FOLLOWING TOPICS**:
 
@@ -24,7 +23,6 @@ For more information, see the [documentation](http://loopback.io/doc/en/lb3/Post
 3\. Furthermore, the workflow has also an underlying command that deploys automatically a new release when a success test/deployment takes places. These releases can be found [here](https://github.com/letsfullstack/loopback-connector-postgresql/releases).
 
 ## Installation
--------
 
 In your application root directory, enter this command to install the connector:
 
@@ -37,7 +35,6 @@ This installs the module from npm and adds it as a dependency to the application
 If you create a PostgreSQL data source using the data source generator as described below, you don't have to do this, since the generator will run `npm install` for you.
 
 ## Usage
--------
 
 ### Creating a data source
 
@@ -89,7 +86,6 @@ Example of `datasource.json`:
 Check out [node-pg-pool](https://github.com/brianc/node-pg-pool) and [node postgres pooling example](https://github.com/brianc/node-postgres#pooling-example) for more information.
 
 ## Properties
--------
 
 | Property | Type | Description |
 |---|---|---|
@@ -112,7 +108,6 @@ The PostgreSQL connector uses [node-postgres](https://github.com/brianc/node-pos
 information about configuration parameters, see [node-postgres documentation](https://github.com/brianc/node-postgres/wiki/Client#constructors).
 
 ## Connecting to UNIX domain socket
--------
 
 A common PostgreSQL configuration is to connect to the UNIX domain socket `/var/run/postgresql/.s.PGSQL.5432` instead of using the TCP/IP port. For example:
 
@@ -132,7 +127,6 @@ A common PostgreSQL configuration is to connect to the UNIX domain socket `/var/
 ```
 
 ## Defining models
--------
 
 The model definition consists of the following properties.
 
@@ -237,7 +231,6 @@ For example:
 ```
 
 ## Type mapping
--------
 
 See [LoopBack types](http://loopback.io/doc/en/lb3/LoopBack-types.html) for details on LoopBack's data types.
 
@@ -299,7 +292,6 @@ Customer.find({
 ```
 
 ## Discovery and auto-migration
--------
 
 ### Model discovery
 
@@ -324,7 +316,6 @@ The auto-migrate method:
 Destroying models may result in errors due to foreign key integrity. First delete any related models by calling delete on models with relationships.
 
 ## Running tests
--------
 
 ### Own instance
 If you have a local or remote PostgreSQL instance and would like to use that to run the test suite, use the following command:
