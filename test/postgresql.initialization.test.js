@@ -23,8 +23,8 @@ describe('initialization', function() {
 
     var settings = newConfig();
     settings.max = 999; // non-default value
-    var dataSource = new DataSource(connector, settings);
-    var pool = dataSource.connector.pg;
+    dataSource = new DataSource(connector, settings);
+    pool = dataSource.connector.pg;
     pool.options.max.should.equal(999);
   });
 
@@ -36,8 +36,8 @@ describe('initialization', function() {
     should.not.exist(clientConfig.connectionString);
 
     settings = newConfig(true);
-    var dataSource = new DataSource(connector, settings);
-    var clientConfig = dataSource.connector.clientConfig;
+    dataSource = new DataSource(connector, settings);
+    clientConfig = dataSource.connector.clientConfig;
     clientConfig.connectionString.should.equal(settings.url);
   });
 

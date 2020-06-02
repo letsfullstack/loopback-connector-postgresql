@@ -1,6 +1,6 @@
 {
-  "name": "loopback-connector-postgresql",
-  "version": "0.0.3",
+  "name": "@letsfullstack/loopback-connector-postgresql",
+  "version": "0.0.5",
   "description": "Loopback PostgreSQL Connector",
   "engines": {
     "node": ">=4"
@@ -32,15 +32,12 @@
     "eslint": "^7.1.0",
     "eslint-config-loopback": "^4.0.0",
     "lodash": "^4.17.4",
-    "loopback-datasource-juggler": "^3.0.0",
+    "loopback-datasource-juggler": "^3.0.0 || ^4.0.0",
     "mocha": "^3.0.0",
     "rc": "^1.0.0",
     "should": "^8.0.2",
     "sinon": "^1.15.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/strongloop/loopback-connector-postgresql.git"
-  },
+  "repository": "git://github.com/letsfullstack/loopback-connector-postgresql.git",
   "license": "Artistic-2.0"
 }

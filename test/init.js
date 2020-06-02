@@ -38,7 +38,7 @@ global.getDBConfig = function(useUrl) {
   var settings = config;
   if (useUrl) {
     settings = {url: url};
-  };
+  }
   return settings;
 };
 
@@ -47,7 +47,7 @@ global.getDataSource = global.getSchema = function(useUrl) {
   // Return cached data source if possible to avoid too many client error
   // due to multiple instances of connection pools
   if (!useUrl && db) return db;
-  var settings = getDBConfig(useUrl);
+  var settings = global.getDBConfig(useUrl);
   db = new DataSource(require('../'), settings);
   db.log = function(a) {
     // console.log(a);
