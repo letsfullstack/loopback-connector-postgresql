@@ -1,6 +1,8 @@
+![Publish Github Package](https://github.com/letsfullstack/loopback-connector-postgresql/workflows/Publish%20Github%20Package/badge.svg)
+
 # Loopback PostgreSQL Connector
 
-This loopback module is the PostgreSQL connector for the LoopBack framework. [PostgreSQL](https://www.postgresql.org/), is a popular open-source object-relational database. https://github.com/letsfullstack/loopback-connector-postgresql/workflows/Publish%20Github%20Package/badge.svg
+This loopback module is the PostgreSQL connector for the LoopBack framework. [PostgreSQL](https://www.postgresql.org/), is a popular open-source object-relational database.
 
 For more information, see the [documentation](http://loopback.io/doc/en/lb3/PostgreSQL-connector.html).
 
