@@ -1,6 +1,6 @@
 {
   "name": "@letsfullstack/loopback-connector-postgresql",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Loopback PostgreSQL Connector",
   "engines": {
     "node": ">=4"
